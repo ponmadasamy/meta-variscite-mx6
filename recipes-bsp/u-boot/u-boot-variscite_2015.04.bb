@@ -9,7 +9,8 @@ PROVIDES = "u-boot"
 
 SRCREV = "${AUTOREV}"
 SRCBRANCH = "imx_v2015.04_4.1.15_1.1.0_ga_var01"
-SRC_URI = "git://github.com/varigit/uboot-imx.git;protocol=git;branch=${SRCBRANCH}"
+#SRC_URI = "git://github.com/varigit/uboot-imx.git;protocol=git;branch=${SRCBRANCH}"
+SRC_URI = "git://github.com/ponmadasamy/uboot-imx.git;protocol=git;branch=${SRCBRANCH}"
 LIC_FILES_CHKSUM = "file://README;md5=d3893ecbe5dadb7446983acba5cd607d"
 
 S = "${WORKDIR}/git"
