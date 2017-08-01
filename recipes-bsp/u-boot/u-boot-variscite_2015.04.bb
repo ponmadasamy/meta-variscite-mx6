@@ -8,7 +8,7 @@ PROVIDES = "u-boot"
 
 
 #SRCREV = "${AUTOREV}"
-SRCREV = "b41d07f854bf4392211a3aa4295e6855feeed4f7"
+SRCREV = "45707a05382c2d69025e274645a5ad7c98442eb8"
 SRCBRANCH = "imx_v2015.04_4.1.15_1.1.0_ga_var01"
 #SRC_URI = "git://github.com/varigit/uboot-imx.git;protocol=git;branch=${SRCBRANCH}"
 SRC_URI = "git://github.com/ponmadasamy/uboot-imx.git;protocol=git;branch=${SRCBRANCH}"

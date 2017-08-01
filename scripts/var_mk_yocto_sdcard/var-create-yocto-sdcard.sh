@@ -9,8 +9,8 @@ DEFAULT_ROOTFS_SIZE=3700
 AUTO_FILL_SD=0
 SPARE_SIZE=4
 
-YOCTO_ROOT=~/var-som-mx6-yocto-jethro
-YOCTO_BUILD=${YOCTO_ROOT}/build_x11
+YOCTO_ROOT=~/DRMS/yocto/jethro
+YOCTO_BUILD=${YOCTO_ROOT}/build-x11
 
 
 YOCTO_IMGS_PATH=${YOCTO_BUILD}/tmp/deploy/images/var-som-mx6
@@ -177,22 +177,27 @@ function install_yocto
 {
 	echo
 	echo "Installing Yocto Boot partition"
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-cap.dtb		${P1_MOUNT_DIR}/imx6dl-var-som-cap.dtb
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-res.dtb		${P1_MOUNT_DIR}/imx6dl-var-som-res.dtb
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-solo-cap.dtb	${P1_MOUNT_DIR}/imx6dl-var-som-solo-cap.dtb
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-solo-res.dtb	${P1_MOUNT_DIR}/imx6dl-var-som-solo-res.dtb
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-solo-vsc.dtb	${P1_MOUNT_DIR}/imx6dl-var-som-solo-vsc.dtb
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-vsc.dtb		${P1_MOUNT_DIR}/imx6dl-var-som-vsc.dtb
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6q-var-dart.dtb			${P1_MOUNT_DIR}/imx6q-var-dart.dtb
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6q-var-som-cap.dtb		${P1_MOUNT_DIR}/imx6q-var-som-cap.dtb
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6q-var-som-res.dtb		${P1_MOUNT_DIR}/imx6q-var-som-res.dtb
-	cp ${YOCTO_IMGS_PATH}/uImage-imx6q-var-som-vsc.dtb		${P1_MOUNT_DIR}/imx6q-var-som-vsc.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-cap.dtb		${P1_MOUNT_DIR}/imx6dl-var-som-cap.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-res.dtb		${P1_MOUNT_DIR}/imx6dl-var-som-res.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-solo-cap.dtb	${P1_MOUNT_DIR}/imx6dl-var-som-solo-cap.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-solo-res.dtb	${P1_MOUNT_DIR}/imx6dl-var-som-solo-res.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-solo-vsc.dtb	${P1_MOUNT_DIR}/imx6dl-var-som-solo-vsc.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-vsc.dtb		${P1_MOUNT_DIR}/imx6dl-var-som-vsc.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6q-var-dart.dtb			${P1_MOUNT_DIR}/imx6q-var-dart.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6q-var-som-cap.dtb		${P1_MOUNT_DIR}/imx6q-var-som-cap.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6q-var-som-res.dtb		${P1_MOUNT_DIR}/imx6q-var-som-res.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6q-var-som-vsc.dtb		${P1_MOUNT_DIR}/imx6q-var-som-vsc.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-solo-drmc.dtb	${P1_MOUNT_DIR}/imx6dl-var-som-solo-drmc.dtb
+	cp ${YOCTO_IMGS_PATH}/uImage-imx6dl-var-som-drmc.dtb		${P1_MOUNT_DIR}/imx6dl-var-som-drmc.dtb
+#	cp ${YOCTO_IMGS_PATH}/uImage-imx6q-var-som-drmc.dtb		${P1_MOUNT_DIR}/imx6q-var-som-drmc.dtb
 	pv ${YOCTO_IMGS_PATH}/uImage >					${P1_MOUNT_DIR}/uImage
 	sync
 
 	echo
 	echo "Installing Yocto Root File System"
-	pv ${YOCTO_IMGS_PATH}/fsl-image-gui-var-som-mx6.tar.bz2 | tar -xj -C ${P2_MOUNT_DIR}/
+#	pv ${YOCTO_IMGS_PATH}/fsl-image-gui-var-som-mx6.tar.bz2 | tar -xj -C ${P2_MOUNT_DIR}/
+	pv ${YOCTO_IMGS_PATH}/fsl-image-qt5-var-som-mx6.tar.bz2 | tar -xj -C ${P2_MOUNT_DIR}/
+#	pv ${YOCTO_IMGS_PATH}/core-image-minimal-var-som-mx6.tar.bz2 | tar -xj -C ${P2_MOUNT_DIR}/
 }
 
 function copy_images
@@ -240,8 +245,8 @@ format_yocto
 install_bootloader
 mount_parts
 install_yocto
-copy_images
-copy_scripts
+#copy_images
+#copy_scripts
 
 echo
 echo "Syncing"
